@@ -4,14 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc -p tsconfig-cjs.json"
+    "tsc": "tsc -p tsconfig-cjs.json",
+		"start": "cross-env TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true node -r ts-node/register src/index.ts",
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bin": {
-    "generate-vault-env": "src/index.ts"
-  },
   "dependencies": {
     "config": "3.3.9",
     "node-vault": "0.9.22",
