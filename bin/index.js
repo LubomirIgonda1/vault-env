@@ -13,13 +13,10 @@ const helpers_1 = require("./utils/helpers");
 // vars
 const vaultConfig = config_1.default.get('vault');
 async function getVaultSecrets() {
-    console.log(1);
     // check if all config variables are set
     (0, helpers_1.checkConfigVars)(vaultConfig);
-    console.log(1);
     // get env file path and add vault env file to .gitignore
     const envFilePath = (0, helpers_1.checkGitIgnoreFileAndGetEnvFilePath)();
-    console.log(1);
     const vault = (0, node_vault_1.default)({
         endpoint: vaultConfig.url
     });
