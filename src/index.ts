@@ -14,12 +14,13 @@ import { IVaultConfig } from './types/config'
 const vaultConfig = config.get('vault') as IVaultConfig
 
 async function getVaultSecrets() {
+	console.log(1)
 	// check if all config variables are set
 	checkConfigVars(vaultConfig)
-
+	console.log(1)
 	// get env file path and add vault env file to .gitignore
 	const envFilePath = checkGitIgnoreFileAndGetEnvFilePath()
-
+	console.log(1)
 	const vault = Vault({
 		endpoint: vaultConfig.url
 	})
