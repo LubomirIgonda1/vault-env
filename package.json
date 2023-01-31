@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig-cjs.json"
+    "postpublish": "tsc -p tsconfig-cjs.json"
   },
   "keywords": [],
   "author": "",
