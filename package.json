@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc -p tsconfig-cjs.json",
-    "start": "cross-env TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true node -r ts-node/register src/index.ts"
+    "prestart": "tsc -p tsconfig-cjs.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+	"bin": {
+		"vault": "bin/index.js"
+	},
   "dependencies": {
     "config": "3.3.9",
     "cross-env": "7.0.3",
