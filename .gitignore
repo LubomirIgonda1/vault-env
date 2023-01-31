@@ -1,0 +1,9 @@
+#project
+/node_modules/
+
+# package managers
+package-lock.json
+
+# ecasenka custom files and folders
+.vscode/*
+.env
