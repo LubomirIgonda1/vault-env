@@ -2,7 +2,7 @@
   "compilerOptions": {
     "lib": ["es2021"],
     "module": "CommonJS",
-    "outDir": "./bin",
+    "outDir": "bin",
     "target": "es2021",
     "esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
