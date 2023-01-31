@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "tsc -p tsconfig-cjs.json"
-
+    "build": "tsc -p tsconfig-cjs.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
 	"bin": {
-		"start": "ts-node src/index.ts"
+		"start": "bin/index.js"
 	},
   "dependencies": {
     "config": "3.3.9",
