@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "generate-vault-env": "bin/index.js"
+    "generate-vault-env": "src/index.ts"
   },
   "dependencies": {
     "config": "3.3.9",
