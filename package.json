@@ -5,14 +5,14 @@
   "main": "./bin/index.js",
   "scripts": {
     "build": "tsc -p tsconfig-cjs.json",
-		"create": "npm run build"
+    "create": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-	"bin": {
-		"generate-vault-env": "bin/index.js"
-	},
+  "bin": {
+    "generate-vault-env": "bin/index.js"
+  },
   "dependencies": {
     "config": "3.3.9",
     "cross-env": "7.0.3",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@goodrequest/eslint-config-typescript": "1.2.1",
     "@types/config": "3.3.0",
+    "@types/lodash": "4.14.191",
     "@typescript-eslint/eslint-plugin": "5.49.0",
     "eslint": "8.33.0",
     "eslint-plugin-import": "2.27.5",
