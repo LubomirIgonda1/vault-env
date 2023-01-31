@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
 	"bin": {
-		"start": "./bin/index.js"
+		"generate-vault-env": "bin/index.js"
 	},
   "dependencies": {
     "config": "3.3.9",
