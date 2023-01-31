@@ -2,8 +2,9 @@
   "name": "vault-env",
   "version": "1.0.0",
   "description": "",
-  "main": "./bin/index.js",
+  "main": "index.js",
   "scripts": {
+		"tsc": "tsc -p tsconfig-cjs.json",
     "build": "tsc -p tsconfig-cjs.json",
     "create": "npm run build"
   },
