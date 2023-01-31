@@ -1,16 +1,16 @@
 {
   "name": "vault-env",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-		"postinstall": "tsc -p tsconfig-cjs.json"
+		"prepublishOnly": "rm -rf dist && tsc --project tsconfig.json",
+    "type-check": "tsc --project tsconfig.json --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bin": {
-    "generate-vault-env": "bin/index.js"
+    "generate-vault-env": "./bin/index.js"
   },
   "dependencies": {
     "config": "3.3.9",
