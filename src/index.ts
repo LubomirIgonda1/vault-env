@@ -24,6 +24,10 @@ async function getVaultSecrets() {
 		endpoint: vaultConfig.url
 	})
 
+	if (!vault) {
+		throw new Error('Vault var is not defined')
+	}
+
 	await vault.approleLogin({
 		role_id: vaultConfig.roleID,
 		secret_id: vaultConfig.secretID
