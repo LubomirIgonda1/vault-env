@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "prestart": "tsc -p tsconfig-cjs.json"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
 	"bin": {
-		"generate-vault-env": "bin/index.js"
+		"vault": "ts-node src/index.ts"
 	},
   "dependencies": {
     "config": "3.3.9",
