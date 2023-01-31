@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-		"build": "tsc -p tsconfig-cjs.json",
-		"preinstall": "npm run build"
+		"tsc": "tsc -p tsconfig-cjs.json"
   },
   "keywords": [],
   "author": "",
