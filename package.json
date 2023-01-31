@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
 	"bin": {
-		"vault": "ts-node src/index.ts"
+		"start": "ts-node src/index.ts"
 	},
   "dependencies": {
     "config": "3.3.9",
