@@ -3,4 +3,4 @@
 
 exec 1> /dev/tty
 
-npm run lint && git add README.md && npm run prepublishOnly && git add bin
+npm run lint && git add README.md
