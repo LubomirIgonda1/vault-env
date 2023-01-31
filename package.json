@@ -5,7 +5,7 @@
   "repository": "git@github.com:GoodRequest/vault-env.git",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "rimraf dist && tsc --project tsconfig.json",
+    "tsc": "rimraf dist && tsc --project tsconfig.json",
     "type-check": "tsc --project tsconfig.json --noEmit",
     "lint": "eslint scripts --color --ext .js --ext .ts",
     "postinstall": "husky install && shx rm -rf .git/hooks && shx ln -s ../.husky .git/hooks"
