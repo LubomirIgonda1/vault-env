@@ -1,17 +1,15 @@
 {
-  "name": "vault-env",
+  "name": "@goodrequest/vault-env",
   "version": "1.0.0",
   "author": "Peter Kello <peter.kello@goodrequest.com>",
   "repository": "git@github.com:GoodRequest/vault-env.git",
   "license": "MIT",
+  "bin": "./bin/index.js",
   "scripts": {
-    "tsc": "rimraf dist && tsc --project tsconfig.json",
+    "prepublishOnly": "rimraf dist && tsc --project tsconfig.json",
     "type-check": "tsc --project tsconfig.json --noEmit",
     "lint": "eslint scripts --color --ext .js --ext .ts",
     "postinstall": "husky install && shx rm -rf .git/hooks && shx ln -s ../.husky .git/hooks"
-  },
-  "bin": {
-    "generate-vault-env": "bin/index.js"
   },
   "dependencies": {
     "config": "3.3.9",
