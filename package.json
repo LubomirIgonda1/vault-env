@@ -8,7 +8,7 @@
 	"homepage": "https://github.com/GoodRequest/vault-env.git#readme",
   "bin": "./bin/index.js",
   "scripts": {
-    "prepublishOnly": "rimraf bin && tsc --project tsconfig.json",
+    "tsc": "rimraf bin && tsc --p tsconfig-cjs.json",
     "type-check": "tsc --project tsconfig.json --noEmit",
     "lint": "eslint scripts --color --ext .js --ext .ts",
     "husky": "husky install && shx rm -rf .git/hooks && shx ln -s ../.husky .git/hooks"
