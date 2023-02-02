@@ -14,9 +14,10 @@ export interface IVaultConfig {
 
 And in *.env* file must be set the following variables
 ```env
-VAULT_URL=******
+VAULT_URL=****** # the url where is running the Vault instance
 VAULT_ROLE_ID=******
 VAULT_SECRET_ID=******
+VAULT_SECRETS_PATH=****** # path to the Vault project
 ```
 
 **And for using in Goodrequest** you have to be in **Goodrequest VPN**
@@ -28,7 +29,7 @@ rm -rf ~/.npm/_npx
 
 Script starts with the following command:
 ``` bash
-npx GoodRequest/vault-env
+npx https://github.com/GoodRequest/vault-env
 ```
 
 ## Description
