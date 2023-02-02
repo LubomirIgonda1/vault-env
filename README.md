@@ -18,6 +18,8 @@ VAULT_URL=******
 VAULT_ROLE_ID=******
 VAULT_SECRET_ID=******
 ```
+
+**And for using in Goodrequest** you have to be in **Goodrequest VPN**
 ## Usage
 It is a good idea to clear the *npx cache* before running the script by following command (MacOs):
 ```bash
