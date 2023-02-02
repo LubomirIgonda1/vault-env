@@ -5,6 +5,6 @@
 # package managers
 package-lock.json
 
-# ecasenka custom files and folders
+# custom files and folders
 .vscode/*
 .env
