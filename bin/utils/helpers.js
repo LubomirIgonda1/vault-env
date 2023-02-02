@@ -29,9 +29,14 @@ exports.checkConfigVars = checkConfigVars;
 const checkGitIgnoreFileAndGetEnvFilePath = (envVaultFileName = undefined) => {
     const envVaultFile = envVaultFileName || '.env.vault';
     const gitIgnorePath = path_1.default.resolve(process.cwd(), '.gitignore');
-    const gitIgnoreFile = fs_1.default.readFileSync(gitIgnorePath, 'utf-8');
-    if (!(0, lodash_1.includes)(gitIgnoreFile, envVaultFile)) {
-        fs_1.default.appendFileSync(gitIgnorePath, envVaultFile);
+    if (!fs_1.default.existsSync(gitIgnorePath)) {
+        fs_1.default.writeFileSync(gitIgnorePath, `# Vault -> preventing the publication of secret keys \n${envVaultFile}`);
+    }
+    else {
+        const gitIgnoreFile = fs_1.default.readFileSync(gitIgnorePath, 'utf-8');
+        if (!(0, lodash_1.includes)(gitIgnoreFile, envVaultFile)) {
+            fs_1.default.appendFileSync(gitIgnorePath, envVaultFile);
+        }
     }
     const envFilePath = path_1.default.resolve(process.cwd(), envVaultFile);
     return envFilePath;

@@ -5,13 +5,13 @@
   "repository": "git@github.com:GoodRequest/vault-env.git",
   "license": "MIT",
 	"description": "Script creates the vault env file (.env.vault) and downloads the env variables form projects",
-	"homepage": "https://github.com/GoodRequest/vault-env.gitt#readme",
+	"homepage": "https://github.com/GoodRequest/vault-env.git#readme",
   "bin": "./bin/index.js",
   "scripts": {
-    "prepublishOnly": "rimraf dist && tsc --project tsconfig.json",
+    "prepublishOnly": "rimraf bin && tsc --project tsconfig.json",
     "type-check": "tsc --project tsconfig.json --noEmit",
     "lint": "eslint scripts --color --ext .js --ext .ts",
-    "postinstall": "husky install && shx rm -rf .git/hooks && shx ln -s ../.husky .git/hooks"
+    "husky": "husky install && shx rm -rf .git/hooks && shx ln -s ../.husky .git/hooks"
   },
   "dependencies": {
     "config": "3.3.9",
