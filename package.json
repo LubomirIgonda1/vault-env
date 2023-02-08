@@ -1,11 +1,11 @@
 {
   "name": "@goodrequest/vault-env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Peter Kello <peter.kello@goodrequest.com>",
   "repository": "git@github.com:GoodRequest/vault-env.git",
   "license": "MIT",
-	"description": "Script creates the vault env file (.env.vault) and downloads the env variables form projects",
-	"homepage": "https://github.com/GoodRequest/vault-env.git#readme",
+  "description": "Script creates the vault env file (.env.vault) and downloads the env variables form projects",
+  "homepage": "https://github.com/GoodRequest/vault-env.git#readme",
   "bin": "./bin/index.js",
   "scripts": {
     "tsc": "rimraf bin && tsc --p tsconfig-cjs.json",
