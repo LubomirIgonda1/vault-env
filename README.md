@@ -35,6 +35,13 @@ npx https://github.com/GoodRequest/vault-env
 ## Description
 Script creates *.env.vault* file and add it to *.gitignore* file. In *.env.vault* fille are stored all env variables and secrets form *Vault* for project. Every env variable is possible to override in *.env* file
 
+## Note
+in config file in the project must be initialized *dotenv* or another env files management package!
+
+```javascript
+import 'dotenv/config'
+```
+
 
 
 
