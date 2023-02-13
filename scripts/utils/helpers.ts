@@ -57,7 +57,10 @@ export const addConfigScript = async () => {
 export const addConfigImportToIndex = () => {
 	const indexFilePath = path.resolve(process.cwd(), 'src', 'index.ts')
 	const vaultConfigImport = "import './utils/vaultConfig'\n\n"
-	const indexContent = fs.readFileSync(indexFilePath)
-	fs.rmSync(indexFilePath)
-	fs.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`)
+	const indexContent = fs.readFileSync(indexFilePath, 'utf-8')
+
+	if (!includes(indexContent, vaultConfigImport)) {
+		fs.rmSync(indexFilePath)
+		fs.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`)
+	}
 }
