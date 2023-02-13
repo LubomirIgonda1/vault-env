@@ -54,8 +54,10 @@ exports.addConfigScript = addConfigScript;
 const addConfigImportToIndex = () => {
     const indexFilePath = path_1.default.resolve(process.cwd(), 'src', 'index.ts');
     const vaultConfigImport = "import './utils/vaultConfig'\n\n";
-    const indexContent = fs_1.default.readFileSync(indexFilePath);
-    fs_1.default.rmSync(indexFilePath);
-    fs_1.default.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`);
+    const indexContent = fs_1.default.readFileSync(indexFilePath, 'utf-8');
+    if (!(0, lodash_1.includes)(indexContent, vaultConfigImport)) {
+        fs_1.default.rmSync(indexFilePath);
+        fs_1.default.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`);
+    }
 };
 exports.addConfigImportToIndex = addConfigImportToIndex;
