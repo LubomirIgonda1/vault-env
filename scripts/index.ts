@@ -5,7 +5,7 @@ import config from 'config'
 import Vault from 'node-vault'
 
 // utils
-import { checkConfigVars, checkGitIgnoreFileAndGetEnvFilePath } from './utils/helpers'
+import { checkConfigVars, checkGitIgnoreFileAndGetEnvFilePath, addConfigScript, addConfigImportToIndex } from './utils/helpers'
 
 // types
 import { IVaultConfig } from './types/config'
@@ -34,6 +34,10 @@ async function getVaultSecrets() {
 	const vaultSecrets = await vault.read(vaultConfig.secretsPath)
 	const envVars = Object.keys(vaultSecrets.data).map((key) => `${key}=${vaultSecrets.data[key]}`)
 	fs.writeFileSync(envFilePath, envVars.join(os.EOL))
+
+	// add script for the overriding
+	await addConfigScript()
+	addConfigImportToIndex()
 }
 
 export default (async () => {

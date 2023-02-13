@@ -15,6 +15,6 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "include": ["./scripts/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./scripts/**/*", "templates"],
+  "exclude": ["node_modules", "templates"]
 }

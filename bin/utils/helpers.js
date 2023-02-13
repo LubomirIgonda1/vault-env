@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkGitIgnoreFileAndGetEnvFilePath = exports.checkConfigVars = void 0;
+exports.addConfigImportToIndex = exports.addConfigScript = exports.checkGitIgnoreFileAndGetEnvFilePath = exports.checkConfigVars = void 0;
 // native node packages
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
@@ -42,3 +42,20 @@ const checkGitIgnoreFileAndGetEnvFilePath = (envVaultFileName = undefined) => {
     return envFilePath;
 };
 exports.checkGitIgnoreFileAndGetEnvFilePath = checkGitIgnoreFileAndGetEnvFilePath;
+// add config script to the utils directory (config script enables overriding the .env file)
+const addConfigScript = async () => {
+    const configScriptPath = path_1.default.resolve(process.cwd(), 'src', 'utils', 'vaultConfig.ts');
+    // create vault script in utils !!! project must have src/utils directory
+    const templatePath = path_1.default.resolve(__dirname, '..', '..', 'templates', 'vaultConfig.ts');
+    const vaultScript = fs_1.default.readFileSync(templatePath, 'utf-8');
+    fs_1.default.writeFileSync(configScriptPath, vaultScript);
+};
+exports.addConfigScript = addConfigScript;
+const addConfigImportToIndex = () => {
+    const indexFilePath = path_1.default.resolve(process.cwd(), 'src', 'index.ts');
+    const vaultConfigImport = "import './utils/vaultConfig'\n\n";
+    const indexContent = fs_1.default.readFileSync(indexFilePath);
+    fs_1.default.rmSync(indexFilePath);
+    fs_1.default.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`);
+};
+exports.addConfigImportToIndex = addConfigImportToIndex;

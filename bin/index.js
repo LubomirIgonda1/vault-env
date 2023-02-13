@@ -30,6 +30,9 @@ async function getVaultSecrets() {
     const vaultSecrets = await vault.read(vaultConfig.secretsPath);
     const envVars = Object.keys(vaultSecrets.data).map((key) => `${key}=${vaultSecrets.data[key]}`);
     fs_1.default.writeFileSync(envFilePath, envVars.join(os_1.default.EOL));
+    // add script for the overriding
+    await (0, helpers_1.addConfigScript)();
+    (0, helpers_1.addConfigImportToIndex)();
 }
 exports.default = (async () => {
     try {
