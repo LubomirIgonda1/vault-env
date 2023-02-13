@@ -59,7 +59,7 @@ export const addConfigImportToIndex = () => {
 	const vaultConfigImport = "import './utils/vaultConfig'\n\n"
 	const indexContent = fs.readFileSync(indexFilePath, 'utf-8')
 
-	if (!includes(indexContent, vaultConfigImport)) {
+	if (!includes(indexContent, "import './utils/vaultConfig'")) {
 		fs.rmSync(indexFilePath)
 		fs.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`)
 	}
