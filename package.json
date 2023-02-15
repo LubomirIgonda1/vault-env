@@ -1,6 +1,6 @@
 {
   "name": "@goodrequest/vault-env",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Peter Kello <peter.kello@goodrequest.com>",
   "repository": "git@github.com:GoodRequest/vault-env.git",
   "license": "MIT",
