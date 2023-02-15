@@ -44,23 +44,3 @@ export const checkGitIgnoreFileAndGetEnvFilePath = (envVaultFileName: undefined 
 
 	return envFilePath
 }
-
-// add config script to the utils directory (config script enables overriding the .env file)
-export const addConfigScript = async () => {
-	const configScriptPath = path.resolve(process.cwd(), 'src', 'utils', 'vaultConfig.ts')
-	// create vault script in utils !!! project must have src/utils directory
-	const templatePath = path.resolve(__dirname, '..', '..', 'templates', 'vaultConfig.ts')
-	const vaultScript = fs.readFileSync(templatePath, 'utf-8')
-	fs.writeFileSync(configScriptPath, vaultScript)
-}
-
-export const addConfigImportToIndex = () => {
-	const indexFilePath = path.resolve(process.cwd(), 'src', 'index.ts')
-	const vaultConfigImport = "import './utils/vaultConfig'\n\n"
-	const indexContent = fs.readFileSync(indexFilePath, 'utf-8')
-
-	if (!includes(indexContent, "import './utils/vaultConfig'")) {
-		fs.rmSync(indexFilePath)
-		fs.writeFileSync(indexFilePath, `${vaultConfigImport}${indexContent}`)
-	}
-}
