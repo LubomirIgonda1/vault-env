@@ -40,7 +40,7 @@ vault: {
 	url: process.env.VAULT_URL,
 	roleID: process.env.VAULT_ROLE_ID,
 	secretID: process.env.VAULT_SECRET_ID,
-	secretsPath: process.env.VAULT_SECRETS_PATH
+	secretsPath: process.env.VAULT_SECRETS_PATH || 'backend/PROJECT_NAME/backend/dev'
 }
 ```
 
