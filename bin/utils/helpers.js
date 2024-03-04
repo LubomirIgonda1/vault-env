@@ -11,18 +11,24 @@ const path_1 = __importDefault(require("path"));
 const lodash_1 = require("lodash");
 // check if all config variables are set
 const checkConfigVars = (vaultConfig) => {
-    if (!vaultConfig.url) {
+    if (!vaultConfig?.url) {
         throw new Error('vault url is missing!');
     }
-    if (!vaultConfig.roleID) {
+    if (!vaultConfig?.roleID) {
         throw new Error('vault roleID is missing!');
     }
-    if (!vaultConfig.secretID) {
+    if (!vaultConfig?.secretID) {
         throw new Error('vault roleID is missing!');
     }
-    if (!vaultConfig.secretsPath) {
+    if (!vaultConfig?.secretsPath) {
         throw new Error('vault secretsPath is missing!');
     }
+    return {
+        url: vaultConfig.url,
+        roleID: vaultConfig.roleID,
+        secretID: vaultConfig.secretID,
+        secretsPath: vaultConfig.secretsPath
+    };
 };
 exports.checkConfigVars = checkConfigVars;
 // get env file path and add vault env file to .gitignore

@@ -11,7 +11,7 @@ import { checkConfigVars, checkGitIgnoreFileAndGetEnvFilePath } from './utils/he
 import { IVaultConfig } from './types/config'
 
 // vars
-const vaultConfig: IVaultConfig = config.get('vault') || {
+const vaultConfig: Partial<IVaultConfig> = (config.has('vault') && config.get('vault')) || {
 	url: process.env.VAULT_URL,
 	roleID: process.env.VAULT_ROLE_ID,
 	secretID: process.env.VAULT_SECRET_ID,
@@ -20,11 +20,12 @@ const vaultConfig: IVaultConfig = config.get('vault') || {
 
 async function getVaultSecrets() {
 	// check if all config variables are set
-	checkConfigVars(vaultConfig)
+	const options = checkConfigVars(vaultConfig)
+
 	// get env file path and add vault env file to .gitignore
 	const envFilePath = checkGitIgnoreFileAndGetEnvFilePath()
 	const vault = Vault({
-		endpoint: vaultConfig.url
+		endpoint: options.url
 	})
 
 	if (!vault) {
@@ -32,11 +33,10 @@ async function getVaultSecrets() {
 	}
 
 	await vault.approleLogin({
-		role_id: vaultConfig.roleID,
-		secret_id: vaultConfig.secretID
+		role_id: options.roleID,
+		secret_id: options.secretID
 	})
-
-	const vaultSecrets = await vault.read(vaultConfig.secretsPath)
+	const vaultSecrets = await vault.read(options.secretsPath)
 	const envVars = Object.keys(vaultSecrets.data).map((key) => `${key}=${vaultSecrets.data[key]}`)
 	fs.writeFileSync(envFilePath, envVars.join(os.EOL))
 }

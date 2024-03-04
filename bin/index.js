@@ -11,7 +11,7 @@ const node_vault_1 = __importDefault(require("node-vault"));
 // utils
 const helpers_1 = require("./utils/helpers");
 // vars
-const vaultConfig = config_1.default.get('vault') || {
+const vaultConfig = (config_1.default.has('vault') && config_1.default.get('vault')) || {
     url: process.env.VAULT_URL,
     roleID: process.env.VAULT_ROLE_ID,
     secretID: process.env.VAULT_SECRET_ID,
@@ -19,20 +19,20 @@ const vaultConfig = config_1.default.get('vault') || {
 };
 async function getVaultSecrets() {
     // check if all config variables are set
-    (0, helpers_1.checkConfigVars)(vaultConfig);
+    const options = (0, helpers_1.checkConfigVars)(vaultConfig);
     // get env file path and add vault env file to .gitignore
     const envFilePath = (0, helpers_1.checkGitIgnoreFileAndGetEnvFilePath)();
     const vault = (0, node_vault_1.default)({
-        endpoint: vaultConfig.url
+        endpoint: options.url
     });
     if (!vault) {
         throw new Error('Vault var is not defined');
     }
     await vault.approleLogin({
-        role_id: vaultConfig.roleID,
-        secret_id: vaultConfig.secretID
+        role_id: options.roleID,
+        secret_id: options.secretID
     });
-    const vaultSecrets = await vault.read(vaultConfig.secretsPath);
+    const vaultSecrets = await vault.read(options.secretsPath);
     const envVars = Object.keys(vaultSecrets.data).map((key) => `${key}=${vaultSecrets.data[key]}`);
     fs_1.default.writeFileSync(envFilePath, envVars.join(os_1.default.EOL));
 }

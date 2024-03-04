@@ -14,19 +14,19 @@
     "husky": "husky install && shx rm -rf .git/hooks && shx ln -s ../.husky .git/hooks"
   },
   "dependencies": {
-    "config": "3.3.9",
+    "config": "3.3.11",
     "cross-env": "7.0.3",
-    "dotenv": "16.0.3",
+    "dotenv": "16.4.5",
     "lodash": "4.17.21",
-    "node-vault": "0.9.22",
+    "node-vault": "0.10.2",
     "rimraf": "4.1.2",
-    "ts-node": "10.9.1"
+    "ts-node": "10.9.2"
   },
   "devDependencies": {
     "@commitlint/cli": "17.4.2",
     "@commitlint/config-conventional": "17.4.2",
     "@goodrequest/eslint-config-typescript": "1.2.1",
-    "@types/config": "3.3.0",
+    "@types/config": "3.3.3",
     "@types/lodash": "4.14.191",
     "@typescript-eslint/eslint-plugin": "5.49.0",
     "commitlint-config-jira": "1.6.4",
@@ -37,6 +37,6 @@
     "husky": "8.0.3",
     "prettier": "2.8.3",
     "shx": "0.3.4",
-    "typescript": "4.9.5"
+    "typescript": "5.3.3"
   }
 }

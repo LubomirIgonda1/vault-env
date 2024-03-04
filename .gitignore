@@ -2,9 +2,6 @@
 /node_modules/
 /.bin
 
-# package managers
-package-lock.json
-
 # custom files and folders
 .vscode/*
 .env

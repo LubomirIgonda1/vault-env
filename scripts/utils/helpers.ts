@@ -9,21 +9,28 @@ import { includes } from 'lodash'
 import { IVaultConfig } from '../types/config'
 
 // check if all config variables are set
-export const checkConfigVars = (vaultConfig: IVaultConfig): void | never => {
-	if (!vaultConfig.url) {
+export const checkConfigVars = (vaultConfig: Partial<IVaultConfig>): IVaultConfig => {
+	if (!vaultConfig?.url) {
 		throw new Error('vault url is missing!')
 	}
 
-	if (!vaultConfig.roleID) {
+	if (!vaultConfig?.roleID) {
 		throw new Error('vault roleID is missing!')
 	}
 
-	if (!vaultConfig.secretID) {
+	if (!vaultConfig?.secretID) {
 		throw new Error('vault roleID is missing!')
 	}
 
-	if (!vaultConfig.secretsPath) {
+	if (!vaultConfig?.secretsPath) {
 		throw new Error('vault secretsPath is missing!')
+	}
+
+	return {
+		url: vaultConfig.url,
+		roleID: vaultConfig.roleID,
+		secretID: vaultConfig.secretID,
+		secretsPath: vaultConfig.secretsPath
 	}
 }
 
