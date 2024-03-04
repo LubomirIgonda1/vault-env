@@ -11,7 +11,12 @@ import { checkConfigVars, checkGitIgnoreFileAndGetEnvFilePath } from './utils/he
 import { IVaultConfig } from './types/config'
 
 // vars
-const vaultConfig = config.get('vault') as IVaultConfig
+const vaultConfig: IVaultConfig = config.get('vault') || {
+	url: process.env.VAULT_URL,
+	roleID: process.env.VAULT_ROLE_ID,
+	secretID: process.env.VAULT_SECRET_ID,
+	secretsPath: process.env.VAULT_SECRETS_PATH
+}
 
 async function getVaultSecrets() {
 	// check if all config variables are set
