@@ -5,7 +5,7 @@ The script adds .env.vault to the project and .gitignore file. According the *Va
 Script creates *.env.vault* file and add it to *.gitignore* file. In *.env.vault* fille are stored all env variables and secrets form *Vault* for project. Every env variable is possible to override in *.env* file
 
 ## Prerequisites
-Project has to have implemented the identity-based secrets and encryption management system management [Vault](https://www.vaultproject.io/). 
+Project has to have implemented the identity-based secrets and encryption management system management [Vault](https://www.vaultproject.io/).
 
 **For using in Goodrequest** you have to be in **Goodrequest VPN**
 ## Usage
@@ -15,7 +15,7 @@ rm -rf ~/.npm/_npx
 ```
 **Add Vault script to package.json**
 ```
-"vault": "npx --yes https://github.com/GoodRequest/vault-env"
+"vault": "npx --yes --node-options='-r ts-node/register -r ./dotenv.ts' https://github.com/GoodRequest/vault-env"
 ```
 
 **Update scripts where you would like to run Vault script**
@@ -24,48 +24,24 @@ rm -rf ~/.npm/_npx
 "debug": "npm run vault && ..."
 ```
 
-**Add vaultConfig script**
+**Add dotenv.ts script**
 ```
 import dotenv from 'dotenv'
-import fs from 'fs'
-import path from 'path'
+
 
 // eslint-disable-next-line
-['.env.vault', '.env'].forEach((name) => fs.existsSync(path.resolve(__dirname, `../../${name}`)) && dotenv.config({ path: name, override: true }))
+dotenv.config({ path: ['.env.vault', '.env'], override: true })
 ```
 
-**Add config**
+**Set process.env variables**
 ```
-vault: {
-	url: process.env.VAULT_URL,
-	roleID: process.env.VAULT_ROLE_ID,
-	secretID: process.env.VAULT_SECRET_ID,
-	secretsPath: process.env.VAULT_SECRETS_PATH || 'backend/PROJECT_NAME/backend/dev'
-}
+VAULT_URL
+VAULT_ROLE_ID
+VAULT_SECRET_ID
+VAULT_SECRETS_PATH
 ```
 
-**Add config type**
+**Load two .env and .env.vault by using dotenv.ts script**
 ```
-export interface IVaultConfig {
-	url: string
-	roleID: string
-	secretID: string
-	secretsPath: string
-}
+"start": "node -r ts-node/register -r ./dotenv.ts index.ts"
 ```
-
-**Update config/default.ts**
-```
-import 'dotenv/config' // As a first line
-...
-```
-
-**Update src/index.ts config/database.ts envValidation.ts**
-```
-import './utils/vaultConfig' // As a first line
-...
-```
-
-
-
-
