@@ -11,7 +11,12 @@ const node_vault_1 = __importDefault(require("node-vault"));
 // utils
 const helpers_1 = require("./utils/helpers");
 // vars
-const vaultConfig = config_1.default.get('vault');
+const vaultConfig = config_1.default.get('vault') || {
+    url: process.env.VAULT_URL,
+    roleID: process.env.VAULT_ROLE_ID,
+    secretID: process.env.VAULT_SECRET_ID,
+    secretsPath: process.env.VAULT_SECRETS_PATH
+};
 async function getVaultSecrets() {
     // check if all config variables are set
     (0, helpers_1.checkConfigVars)(vaultConfig);
